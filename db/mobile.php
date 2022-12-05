@@ -35,9 +35,9 @@ $addons = [
                 'delegate' => 'CoreCourseModuleDelegate',
                 'method' => 'mobile_view_activity',
                 'styles' => [
-                    'url' => $CFG->wwwroot . '/mod/questionnaire/styles_app.css',
-                    'version' => '1.4'
-                ]
+                        'url' => $CFG->wwwroot . '/mod/questionnaire/mobile_css.php?v=2022092200',
+                        'version' => 2022092200
+                ],
             ]
         ],
         'lang' => [

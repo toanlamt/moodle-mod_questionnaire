@@ -15,20 +15,17 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Questionnaire version information.
+ * CSS pre-processor to let us replace placeholders with URLs, for overriding icons in the mobile app.
  *
- * @package mod_questionnaire
- * @author  Mike Churchward
- * @copyright  2016 Mike Churchward (mike.churchward@poetopensource.org)
- * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package    mod_questionnaire
+ * @copyright  2022 The Open University
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
-
-$plugin->version  = 2022092200;  // The current module version (Date: YYYYMMDDXX).
-$plugin->requires = 2022030300; // Moodle version (4.0).
-
-$plugin->component = 'mod_questionnaire';
-
-$plugin->release  = '4.0.0 (Build - 2022030300)';
-$plugin->maturity  = MATURITY_BETA;
+define('ABORT_AFTER_CONFIG', true);
+require_once(__DIR__ . '/../../config.php');
+$css = file_get_contents($CFG->dirroot . '/mod/questionnaire/mobile.css');
+$css = str_replace('@@WWWROOT@@', $CFG->wwwroot, $css);
+header('Access-Control-Allow-Origin: *');
+header('Content-Type: text/css');
+echo $css;
